@@ -19,6 +19,7 @@ export default function Content() {
     setInput(e.target.value.toLowerCase())
   }
 
+
   return (
     <section className='content'>
       <button onClick={() => setCategory('all')}>All</button>
