@@ -1,7 +1,7 @@
 import CartList from './CartList'
 import Total from './Total'
 
-export default function Cart({cartItems, setCartItems}) {
+export default function Cart({cartItems, setCartItems, setItemDetails}) {
 
   let total = 0
   Object.keys(cartItems).forEach(barcode => {
@@ -14,6 +14,7 @@ export default function Cart({cartItems, setCartItems}) {
       <CartList
         cartItems={cartItems}
         setCartItems={setCartItems}
+        setItemDetails={setItemDetails}
       />
       <Total total={total} />
     </section>

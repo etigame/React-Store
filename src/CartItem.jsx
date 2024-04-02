@@ -1,6 +1,6 @@
 import AddToCart from './AddToCart'
 
-export default function CartItem({ item, cartItems, setCartItems }) {
+export default function CartItem({ item, cartItems, setCartItems, setItemDetails }) {
   const { barcode, name, image, price, amount } = item
 
   const handleDeleteItem = () => {
@@ -12,9 +12,11 @@ export default function CartItem({ item, cartItems, setCartItems }) {
   return (
     <div>
       <button onClick={handleDeleteItem}>X</button>
-      <h3>{name}</h3>
-      <img className="product-img" src={image} alt="Item's image" />
-      <h4>${price}</h4>
+      <div onClick={() => setItemDetails(item)}>
+        <h3>{name}</h3>
+        <img className="product-img" src={image} alt="Item's image" />
+        <h4>${price}</h4>
+      </div>
       <AddToCart
         amount={amount}
         barcode={barcode}

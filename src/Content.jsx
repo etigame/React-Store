@@ -5,7 +5,7 @@ import db from './itemsDB'
 let categories = db.categories
 let items = db.items
 
-export default function Content({ cartItems, setCartItems }) {
+export default function Content({ cartItems, setCartItems, setItemDetails }) {
   const [category, setCategory] = useState('')
   const [input, setInput] = useState('')
   const filteredItems =
@@ -29,6 +29,7 @@ export default function Content({ cartItems, setCartItems }) {
         items={filteredItems}
         cartItems={cartItems}
         setCartItems={setCartItems}
+        setItemDetails={setItemDetails}
       />
     </section>
   )

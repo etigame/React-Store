@@ -1,6 +1,6 @@
 import CartItem from './CartItem'
 
-export default function CartList({ cartItems, setCartItems }) {
+export default function CartList({ cartItems, setCartItems, setItemDetails }) {
 
   return (
     <section className='cart-list'>
@@ -10,6 +10,7 @@ export default function CartList({ cartItems, setCartItems }) {
           key={cartItems[barcode].barcode}
           cartItems={cartItems}
           setCartItems={setCartItems}
+          setItemDetails={setItemDetails}
         />
       ))}
     </section>
