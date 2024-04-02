@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import CartList from './CartList'
 import Total from './Total'
-import cartItemsDB from './cartItemsDB'
 
-export default function Cart() {
-  const [cartItems, setCartItems] = useState(cartItemsDB)
+export default function Cart({cartItems, setCartItems}) {
 
   let total = 0
   Object.keys(cartItems).forEach(barcode => {

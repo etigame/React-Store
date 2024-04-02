@@ -21,12 +21,10 @@ export default function AddToCart({amount, barcode, cartItems, setCartItems}) {
   }
 
   return (
-    <section>
       <div>
         <button onClick={handlePlus}>+</button>
         <span>{amount}</span>
         <button onClick={handleMinus}>-</button>
       </div>
-    </section>
   )
 }

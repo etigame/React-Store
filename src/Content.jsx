@@ -5,7 +5,7 @@ import db from './itemsDB'
 let categories = db.categories
 let items = db.items
 
-export default function Content() {
+export default function Content({ cartItems, setCartItems }) {
   const [category, setCategory] = useState('')
   const [input, setInput] = useState('')
   const filteredItems =
@@ -20,17 +20,16 @@ export default function Content() {
   }
 
   return (
-    <section className='content'>
+    <section className="content">
       <button onClick={() => setCategory('all')}>All</button>
-      <div>
-        {categories.map((c) => (
-          <button onClick={() => setCategory(c)} key={category.name}>
-            {c}
-          </button>
-        ))}
+      <div> {categories.map((c) => (<button key={c} onClick={() => setCategory(c)}> {c} </button>) )}
       </div>
       <Search onInput={handleSearch} />
-      <ItemList items={filteredItems} />
+      <ItemList
+        items={filteredItems}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
     </section>
   )
 }

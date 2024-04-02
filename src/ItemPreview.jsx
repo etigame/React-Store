@@ -1,12 +1,13 @@
-import AddToCart from './AddToCart'
+import AddToCartContent from './AddToCartContent'
 
-function ItemPreview({item, setTotal}) {
+function ItemPreview({item, cartItems, setCartItems}) {
+    const {name, image, price, barcode} = item
     return (
         <div>
-            <h3>{item.name}</h3>
-            <img className='product-img' src={item.image} alt="Item's image" />
-            <h4>${item.price}</h4>
-            <AddToCart setTotal={setTotal} />
+            <h3>{name}</h3>
+            <img className='product-img' src={image} alt="Item's image" />
+            <h4>${price}</h4>
+            <AddToCartContent item={item} cartItems={cartItems} setCartItems={setCartItems} />
         </div>
     )
 }
