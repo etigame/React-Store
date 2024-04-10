@@ -1,11 +1,11 @@
 import ItemPreview from './ItemPreview'
 
-function ItemList({items, cartItems, setCartItems, setItemDetails}) {
+function ItemList({items}) {
 
   return (
     <section>
       {items.map((item) => (
-        <ItemPreview item={item} key={item.barcode} cartItems={cartItems} setCartItems={setCartItems} setItemDetails={setItemDetails}/>
+        <ItemPreview item={item} key={item.barcode} />
       ))}
     </section>
   )

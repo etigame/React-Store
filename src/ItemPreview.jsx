@@ -1,7 +1,11 @@
 import AddToCartContent from './AddToCartContent'
+import { useContext } from 'react'
+import DataContext from './context/DataContext'
 
-function ItemPreview({ item, cartItems, setCartItems, setItemDetails }) {
+function ItemPreview({ item }) {
   const { name, image, price, barcode } = item
+  const {setItemDetails } = useContext(DataContext)
+
   return (
     <div>
       <div onClick={() => setItemDetails(item)}>
@@ -9,11 +13,7 @@ function ItemPreview({ item, cartItems, setCartItems, setItemDetails }) {
         <img className="product-img" src={image} alt="Item's image" />
         <h4>${price}</h4>
       </div>
-      <AddToCartContent
-        item={item}
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-      />
+      <AddToCartContent item={item} />
     </div>
   )
 }

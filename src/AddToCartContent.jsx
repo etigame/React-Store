@@ -1,4 +1,9 @@
-export default function AddToCartContent({ item, cartItems, setCartItems }) {
+import {useContext} from 'react'
+import DataContext from './context/DataContext'
+
+
+export default function AddToCartContent({ item }) {
+  const {cartItems, setCartItems} = useContext(DataContext)
   let {barcode} = item 
   let itemAmount = cartItems[barcode] ? cartItems[barcode].amount : 0
   let cloneCart = { ...cartItems }

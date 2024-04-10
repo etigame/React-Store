@@ -1,4 +1,9 @@
-export default function AddToCart({amount, barcode, cartItems, setCartItems}) {
+import {useContext} from 'react'
+import DataContext from './context/DataContext'
+
+export default function AddToCart({amount, barcode}) {
+  const {cartItems, setCartItems} = useContext(DataContext)
+
   let cloneCart = { ...cartItems }
 
   let handlePlus = () => {

@@ -3,20 +3,21 @@ import Cart from './Cart'
 import Content from './Content'
 import Header from './Header'
 import cartItemsDB from './cartItemsDB'
-import ItemDetails from './ItemDetails'
-
-
+import DataContext from './context/DataContext'
 
 export default function Layout() {
   const [cartItems, setCartItems] = useState(cartItemsDB)
   const [itemDetails, setItemDetails] = useState({})
 
   return (
-    <section className='layout'>
+    <section className="layout">
       {/* <Header /> */}
-      <ItemDetails item={itemDetails}/>
-      <Cart cartItems={cartItems} setCartItems={setCartItems} setItemDetails={setItemDetails}/>
-      <Content cartItems={cartItems} setCartItems={setCartItems} setItemDetails={setItemDetails}/>
+      <DataContext.Provider
+        value={{ cartItems, setCartItems, itemDetails, setItemDetails }}
+      >
+        <Cart />
+        <Content />
+      </DataContext.Provider>
     </section>
   )
 }
