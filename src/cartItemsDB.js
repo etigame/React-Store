@@ -1,4 +1,4 @@
-// Better Data Constructor - find item is quicker in that way
+// Better Data Constructor - object of objects - find item is quicker in that way
 let cartItemsDB = {
   '01': {
     barcode: '01',

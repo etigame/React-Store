@@ -1,36 +1,37 @@
 import { useState } from 'react'
-import {useContext} from 'react'
+import { useContext } from 'react'
+import { useEffect } from 'react'
 import DataContext from './context/DataContext'
-import ItemList from './ItemList'
-import ItemDetails from './ItemDetails'
-import Search from './Search'
-import db from './itemsDB'
-let categories = db.categories
-let items = db.items
+import { Routes, Route } from 'react-router-dom'
+import ItemList from './pages/ItemList'
+import ItemDetails from './pages/ItemDetails'
+import Categories from './pages/Categories'
+import NotFound from './pages/NotFound'
+import CategoryLayout from './CategoryLayout'
+import ItemEdit from './pages/ItemEdit'
+import CreateItem from './pages/CreateItem'
 
 export default function Content() {
   const [category, setCategory] = useState('')
-  const [input, setInput] = useState('')
-  const {itemDetails} = useContext(DataContext)
+  const { items, itemDetails } = useContext(DataContext)
 
-  const filteredItems =
-    category === 'all'
-      ? items
-      : items
-          .filter((item) => item.category === category)
-          .filter((item) => item.name.toLowerCase().includes(input))
-
-  const handleSearch = (e) => {
-    setInput(e.target.value.toLowerCase())
-  }
+  // useEffect(() => {console.log('barcode:', window.location.href.split('/').at(length-1))}, [])
 
   return (
     <section className="content">
-      <button onClick={() => setCategory('all')}>All</button>
-      <div> {categories.map((c) => (<button key={c} onClick={() => setCategory(c)}> {c} </button>) )}
-      </div>
-      <Search onInput={handleSearch} />
-      {!itemDetails.name ? <ItemList items={filteredItems} /> : <ItemDetails/>}
+      <Routes>
+        <Route index element={<Categories />} />
+        <Route path="category/:categoryName" element={<CategoryLayout />}>
+          <Route index element={<ItemList items={items}/>} />
+          <Route path=":itemId">
+            <Route index element={<ItemDetails />} />
+            <Route path=":edit" element={<ItemEdit />} />
+          </Route>
+        </Route>
+        <Route path='create-item' element={<CreateItem />}/>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {/* {!Object.keys(itemDetails).length ? <ItemList items={filteredItems} /> : <ItemDetails/>} */}
     </section>
   )
 }

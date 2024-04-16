@@ -1,4 +1,4 @@
-let items = [{
+let itemsDB = [{
     barcode: "01",
     name: "Apple",
     color: "Red",
@@ -435,6 +435,7 @@ let items = [{
 ];
 
 let categories = []
-items.forEach(item => {if (!categories.includes(item.category)) categories.push(item.category)})
+itemsDB.forEach(item => {if (!categories.includes(item.category)) categories.push(item.category)})
 
-export default {items, categories}
+export default itemsDB
+export {categories}

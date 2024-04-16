@@ -1,11 +1,12 @@
 import {useContext} from 'react'
-import DataContext from './context/DataContext'
+import DataContext from '../context/DataContext'
+import AddToCartContent from '../AddToCartContent'
 
 export default function ItemDetails() {
   const {itemDetails, setItemDetails} = useContext(DataContext)
   const { name, image, price } = itemDetails
 
-  if (!name) return
+  // if (!name) return
 
   return (
     <div className='item-details'>
@@ -14,6 +15,7 @@ export default function ItemDetails() {
       <h3>{name}</h3>
       <img className="product-img" src={image} alt="Item's image" />
       <h4>${price}</h4>
+      <AddToCartContent item={itemDetails}/>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import {useContext} from 'react'
 import DataContext from './context/DataContext'
 
 export default function Cart() {
-
+  
   const {cartItems, setCartItems} = useContext(DataContext)
 
   let total = 0
