@@ -1,11 +1,12 @@
 import { useState, useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import DataContext from '../context/DataContext'
 import { generateBarcode } from '../utils'
 
 export default function ItemEdit() {
   const { items, setItems } = useContext(DataContext)
   const { itemId } = useParams()
+  const navigate = useNavigate()
   const [itemData, setItemData] = useState({
     name: '',
     image: '',
@@ -46,10 +47,12 @@ export default function ItemEdit() {
       const itemIdx = cloneItems.findIndex((item) => item.barcode === itemId)
       cloneItems.splice(itemIdx, 1, itemData)
       setItems(cloneItems)
+      navigate(-1)
     } else {
       const barcode = generateBarcode() + ''
       cloneItems.push({ ...itemData, barcode })
       setItems(cloneItems)
+      navigate(`/category/${itemData.category}`)
     }
   }
 
