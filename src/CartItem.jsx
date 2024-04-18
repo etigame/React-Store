@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import DataContext from './context/DataContext'
 
 export default function CartItem({ item }) {
-  const { barcode, name, image, price, amount } = item
+  const { barcode, name, image, price, amount, category } = item
   const { cartItems, setCartItems, setItemDetails } = useContext(DataContext)
 
   const handleDeleteItem = () => {

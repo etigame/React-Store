@@ -9,13 +9,10 @@ import Categories from './pages/Categories'
 import NotFound from './pages/NotFound'
 import CategoryLayout from './CategoryLayout'
 import ItemEdit from './pages/ItemEdit'
-import CreateItem from './pages/CreateItem'
 
 export default function Content() {
   const [category, setCategory] = useState('')
   const { items, itemDetails } = useContext(DataContext)
-
-  // useEffect(() => {console.log('barcode:', window.location.href.split('/').at(length-1))}, [])
 
   return (
     <section className="content">
@@ -28,10 +25,9 @@ export default function Content() {
             <Route path=":edit" element={<ItemEdit />} />
           </Route>
         </Route>
-        <Route path='create-item' element={<CreateItem />}/>
+        <Route path='create-item' element={<ItemEdit />}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* {!Object.keys(itemDetails).length ? <ItemList items={filteredItems} /> : <ItemDetails/>} */}
     </section>
   )
 }
