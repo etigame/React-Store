@@ -15,7 +15,6 @@ export default function ItemDetails() {
     // setItemDetails(items.find(item => item.id === itemId))
   }, [])
 
-
   return (
     <div className='item-details'>
       <button onClick={() => navigate(-1)}>Back</button>
