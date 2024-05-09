@@ -4,31 +4,31 @@ import DataContext from './context/DataContext'
 
 export default function AddToCartContent({ item }) {
   const {cartItems, setCartItems} = useContext(DataContext)
-  let {barcode} = item 
-  let itemAmount = cartItems[barcode] ? cartItems[barcode].amount : 0
+  let {id} = item 
+  let itemAmount = cartItems[id] ? cartItems[id].amount : 0
   let cloneCart = { ...cartItems }
 
   let handlePlus = () => {
-    cloneCart[barcode].amount += 1
+    cloneCart[id].amount += 1
     setCartItems(cloneCart)
   }
 
   let handleMinus = () => {
     if (itemAmount === 1) handleDeleteItem()
     else {
-      cloneCart[barcode].amount -= 1
+      cloneCart[id].amount -= 1
       setCartItems(cloneCart)
     }
   }
 
   const handleDeleteItem = () => {
     let cloneCart = { ...cartItems }
-    delete cloneCart[barcode]
+    delete cloneCart[id]
     setCartItems(cloneCart)
   }
 
   const handleAddToCart = () => {
-    cloneCart[barcode] = {...item, amount: itemAmount + 1}
+    cloneCart[id] = {...item, amount: itemAmount + 1}
     setCartItems(cloneCart)
   }
 

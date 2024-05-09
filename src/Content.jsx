@@ -19,13 +19,13 @@ export default function Content() {
       <Routes>
         <Route index element={<Categories />} />
         <Route path="category/:categoryName" element={<CategoryLayout />}>
-          <Route index element={<ItemList items={items}/>} />
-          <Route path=":itemId">
-            <Route index element={<ItemDetails />} />
-            <Route path=":edit" element={<ItemEdit />} />
-          </Route>
+          <Route index element={<ItemList />} />
         </Route>
-        <Route path='create-item' element={<ItemEdit />}/>
+        <Route path="item/:itemId">
+          <Route index element={<ItemDetails />} />
+          <Route path=":edit" element={<ItemEdit />} />
+        </Route>
+        <Route path="create-item" element={<ItemEdit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </section>

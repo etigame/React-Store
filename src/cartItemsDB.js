@@ -1,7 +1,7 @@
 // Better Data Constructor - object of objects - find item is quicker in that way
 let cartItemsDB = {
   '01': {
-    barcode: '01',
+    id: '01',
     name: 'Apple',
     color: 'Red',
     emoji: '🍎',
@@ -12,7 +12,7 @@ let cartItemsDB = {
     amount: 6,
   },
   '14': {
-    barcode: '14',
+    id: '14',
     name: 'Raspberry',
     color: 'Red',
     category: 'fruits',
@@ -23,7 +23,7 @@ let cartItemsDB = {
     amount: 4,
   },
   '52': {
-    barcode: '52',
+    id: '52',
     category: 'vegetables',
     name: 'Broccoli',
     color: 'Green',
@@ -34,7 +34,7 @@ let cartItemsDB = {
     amount: 8,
   },
   '53': {
-    barcode: '53',
+    id: '53',
     category: 'vegetables',
     name: 'Bell Pepper',
     color: 'Red',
@@ -45,7 +45,7 @@ let cartItemsDB = {
     amount: 2,
   },
   '59': {
-    barcode: '59',
+    id: '59',
     category: 'vegetables',
     name: 'Onion',
     color: 'Brown',
@@ -56,7 +56,7 @@ let cartItemsDB = {
     amount: 6,
   },
   '63': {
-    barcode: '63',
+    id: '63',
     category: 'vegetables',
     name: 'Radish',
     color: 'Red',
@@ -70,7 +70,7 @@ let cartItemsDB = {
 
 // Old data constructor
 // let cartItemsDB = [{
-//     barcode: "01",
+//     id: "01",
 //     name: "Apple",
 //     color: "Red",
 //     emoji: "🍎",
@@ -80,7 +80,7 @@ let cartItemsDB = {
 //     amount: 6
 // },
 // {
-//     barcode: "04",
+//     id: "04",
 //     name: "Grapes",
 //     color: "Purple",
 //     emoji: "🍇",
@@ -90,7 +90,7 @@ let cartItemsDB = {
 //     amount: 3
 // },
 // {
-//     barcode: "10",
+//     id: "10",
 //     name: "Peach",
 //     color: "Orange",
 //     category: "fruits",
@@ -100,7 +100,7 @@ let cartItemsDB = {
 //     amount: 6
 // },
 // {
-//     barcode: "14",
+//     id: "14",
 //     name: "Raspberry",
 //     color: "Red",
 //     category: "fruits",
@@ -110,7 +110,7 @@ let cartItemsDB = {
 //     amount: 4
 // },
 // {
-//     barcode: "52",
+//     id: "52",
 //     category: "vegetables",
 //     name: 'Broccoli',
 //     color: 'Green',
@@ -120,7 +120,7 @@ let cartItemsDB = {
 //     amount: 8
 // },
 // {
-//     barcode: "53",
+//     id: "53",
 //     category: "vegetables",
 //     name: 'Bell Pepper',
 //     color: 'Red',
@@ -130,7 +130,7 @@ let cartItemsDB = {
 //     amount: 2
 // },
 // {
-//     barcode: "59",
+//     id: "59",
 //     category: "vegetables",
 //     name: 'Onion',
 //     color: 'Brown',
@@ -140,7 +140,7 @@ let cartItemsDB = {
 //     amount: 6
 // },
 // {
-//     barcode: "63",
+//     id: "63",
 //     category: "vegetables",
 //     name: 'Radish',
 //     color: 'Red',
@@ -150,7 +150,7 @@ let cartItemsDB = {
 //     amount: 2
 // },
 // {
-//     barcode: "101",
+//     id: "101",
 //     category: "dairy",
 //     name: 'Milk',
 //     emoji: '🥛',
@@ -159,7 +159,7 @@ let cartItemsDB = {
 //     amount: 3
 // },
 // {
-//     barcode: "104",
+//     id: "104",
 //     category: "dairy",
 //     name: 'Yogurt',
 //     emoji: '🍦',
@@ -168,7 +168,7 @@ let cartItemsDB = {
 //     amount: 8
 // },
 // {
-//     barcode: "108",
+//     id: "108",
 //     category: "dairy",
 //     name: 'Cottage Cheese',
 //     emoji: '🧀',
@@ -177,7 +177,7 @@ let cartItemsDB = {
 //     amount: 1
 // },
 // {
-//     barcode: "154",
+//     id: "154",
 //     category: "alcohol",
 //     name: 'Beer',
 //     emoji: '🍺',

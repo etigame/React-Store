@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import DataContext from '../context/DataContext'
-import { generateBarcode } from '../utils'
+import { generateid } from '../utils'
 
 export default function ItemEdit() {
   const { items, setItems } = useContext(DataContext)
@@ -17,7 +17,7 @@ export default function ItemEdit() {
 
   useEffect(() => {
     if (itemId) {
-      setItemData(items.find((item) => item.barcode === itemId))
+      setItemData(items.find((item) => item.id === itemId))
     }
   }, [])
 
@@ -44,13 +44,13 @@ export default function ItemEdit() {
 
     let cloneItems = [...items]
     if (itemId) {
-      const itemIdx = cloneItems.findIndex((item) => item.barcode === itemId)
+      const itemIdx = cloneItems.findIndex((item) => item.id === itemId)
       cloneItems.splice(itemIdx, 1, itemData)
       setItems(cloneItems)
       navigate(-1)
     } else {
-      const barcode = generateBarcode() + ''
-      cloneItems.push({ ...itemData, barcode })
+      const id = generateid() + ''
+      cloneItems.push({ ...itemData, id })
       setItems(cloneItems)
       navigate(`/category/${itemData.category}`)
     }

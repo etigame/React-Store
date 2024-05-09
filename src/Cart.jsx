@@ -8,8 +8,8 @@ export default function Cart() {
   const {cartItems, setCartItems} = useContext(DataContext)
 
   let total = 0
-  Object.keys(cartItems).forEach(barcode => {
-    total += cartItems[barcode].price * cartItems[barcode].amount
+  Object.keys(cartItems).forEach(id => {
+    total += cartItems[id].price * cartItems[id].amount
   });
 
   return (

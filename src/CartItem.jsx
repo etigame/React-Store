@@ -3,12 +3,12 @@ import { useContext } from 'react'
 import DataContext from './context/DataContext'
 
 export default function CartItem({ item }) {
-  const { barcode, name, image, price, amount, category } = item
+  const { id, name, image, price, amount, category } = item
   const { cartItems, setCartItems, setItemDetails } = useContext(DataContext)
 
   const handleDeleteItem = () => {
     let cloneCart = { ...cartItems } // we need to clone because if we do changes to the original object, it still have the same address in memory - so re-render won't work.
-    delete cloneCart[barcode]
+    delete cloneCart[id]
     setCartItems(cloneCart)
   }
 
@@ -20,7 +20,7 @@ export default function CartItem({ item }) {
         <img className="product-img" src={image} alt="Item's image" />
         <h4>${price}</h4>
       </div>
-      <AddToCart amount={amount} barcode={barcode} />
+      <AddToCart amount={amount} id={id} />
     </div>
   )
 }

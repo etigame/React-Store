@@ -6,6 +6,7 @@ import Header from './Header'
 import itemsDB from './itemsDB'
 import cartItemsDB from './cartItemsDB'
 import DataContext from './context/DataContext'
+import Popup from './pages/Popup'
 
 export default function Layout() {
   const [items, setItems] = useState([])
@@ -44,6 +45,7 @@ export default function Layout() {
         <Cart />
         <Content />
       </DataContext.Provider>
+      <Popup />
     </section>
   )
 }

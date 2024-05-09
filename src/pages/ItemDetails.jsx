@@ -11,7 +11,8 @@ export default function ItemDetails() {
   const { name, image, price } = itemDetails
 
   useEffect(() => {
-    setItemDetails(items.find(item => item.barcode === itemId))
+    fetch(`https://jbh-mockserver.onrender.com/items/${itemId}`).then(res => res.json()).then(data => setItemDetails(data))
+    // setItemDetails(items.find(item => item.id === itemId))
   }, [])
 
 

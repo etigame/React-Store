@@ -1,4 +1,4 @@
-function generateBarcode() {
+function generateid() {
     return getRandomIntInclusive(0, 1000)
 }
 
@@ -8,4 +8,4 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
   }
 
-export {generateBarcode}
+export {generateid}

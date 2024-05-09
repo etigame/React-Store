@@ -7,10 +7,10 @@ export default function CartList() {
   const {cartItems} = useContext(DataContext)
   return (
     <section className='cart-list'>
-      {Object.keys(cartItems).map((barcode) => (
+      {Object.keys(cartItems).map((id) => (
         <CartItem
-          item={cartItems[barcode]}
-          key={cartItems[barcode].barcode}
+          item={cartItems[id]}
+          key={cartItems[id].id}
         />
       ))}
     </section>
