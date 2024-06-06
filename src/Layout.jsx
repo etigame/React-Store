@@ -9,17 +9,42 @@ import DataContext from './context/DataContext'
 import Popup from './pages/Popup'
 import Login from './Login'
 import requestData from './utils/requestFunctions'
-
+import {useSearchParams} from "react-router-dom"
 
 export default function Layout() {
   const [items, setItems] = useState([])
   const [cartItems, setCartItems] = useState({})
+  const [categories, setCategories] = useState([])
+  const [subCategories, setSubCategories] = useState([])
   const [itemDetails, setItemDetails] = useState({})
+  const [searchParams, setSearchParams] = useSearchParams({})
 
+  useEffect(() => {
+    let categoriesFromItems = []
+    let subCategoriesFromItems = []
+
+    requestData('item', 'GET').then((items) =>{
+
+      items.forEach((item) => {
+        if (!categoriesFromItems.includes(item.category))
+          categoriesFromItems.push(item.category)
+        
+        if (!subCategoriesFromItems.includes(item.subCategory))
+          subCategoriesFromItems.push(item.subCategory)
+      })
+
+      // this setState must be in "then" function because otherwise it will set nothing. we need to wait for the data 
+      setCategories(categoriesFromItems)
+      setSubCategories(subCategoriesFromItems)
+    }
+    )
+
+    // fetch('https://jbh-mockserver.onrender.com/categories').then(res => res.json()).then(data => setCategories(Object.keys(data)))
+  }, [])
+  
   useEffect( () => {
-    requestData('item', 'GET').then(data => {
-      setItems(data)
-    })
+    // setSearchParams({skip: 0, limit: 3}) // that's the way I set queryParams after every filter or for pagination
+    // requestData(`item/?skip=${searchParams.get("skip")}&limit=${searchParams.get("limit")}`, 'GET').then(data => setItems(data)).catch(err => err.status === 401 && navigate('/login'))
 
     // fetch(`https://jbh-mockserver.onrender.com/categories/${categoryName}`).then(res => res.json()).then(data => setItems(data))
   }, [])
@@ -52,7 +77,7 @@ export default function Layout() {
       <Header />
       <Login />
       <DataContext.Provider
-        value={{ items, setItems, cartItems, setCartItems, itemDetails, setItemDetails }}
+        value={{ items, setItems, cartItems, setCartItems, itemDetails, setItemDetails, categories, subCategories }}
       >
         <Cart />
         <Content />

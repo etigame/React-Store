@@ -7,11 +7,10 @@ import requestData from './utils/requestFunctions'
 export default function Cart() {
   
   const {cartItems, setCartItems} = useContext(DataContext)
-  console.log(cartItems)
 
   let total = 0
-  Object.keys(cartItems).forEach(id => {
-    total += cartItems[id].price * cartItems[id].amount
+  Object.keys(cartItems).forEach(_id => {
+    total += cartItems[_id].price * cartItems[_id].amount
   });
 
   function handleOrder() {

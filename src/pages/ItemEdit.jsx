@@ -17,7 +17,7 @@ export default function ItemEdit() {
 
   useEffect(() => {
     if (itemId) {
-      setItemData(items.find((item) => item.id === itemId))
+      setItemData(items.find((item) => item._id === itemId))
     }
   }, [])
 
@@ -44,13 +44,13 @@ export default function ItemEdit() {
 
     let cloneItems = [...items]
     if (itemId) {
-      const itemIdx = cloneItems.findIndex((item) => item.id === itemId)
+      const itemIdx = cloneItems.findIndex((item) => item._id === itemId)
       cloneItems.splice(itemIdx, 1, itemData)
       setItems(cloneItems)
       navigate(-1)
     } else {
-      const id = generateid() + ''
-      cloneItems.push({ ...itemData, id })
+      const _id = generateid() + ''
+      cloneItems.push({ ...itemData, _id })
       setItems(cloneItems)
       navigate(`/category/${itemData.category}`)
     }

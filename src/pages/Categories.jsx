@@ -1,18 +1,18 @@
-import {Link} from 'react-router-dom'
-import {useState, useEffect} from 'react'
-// import {categories} from '../itemsDB'
-
+import { Link } from 'react-router-dom'
+import { useState, useEffect, useContext } from 'react'
+import DataContext from '../context/DataContext'
 
 export default function Categories() {
-  const [categories, setCategories] = useState([])
+  const {categories} = useContext(DataContext)
 
-  useEffect(() => {
-    fetch('https://jbh-mockserver.onrender.com/categories').then(res => res.json()).then(data => setCategories(Object.keys(data)))
-  }, [])
 
   return (
     <section className="categories">
-        {categories.map(c => <Link key={c} to={`/category/${c}`}>{c}</Link>)}
+      {categories.map((c) => (
+        <Link key={c} to={`/category/${c}/?page=1`}>
+          {c}
+        </Link>
+      ))}
     </section>
   )
 }
